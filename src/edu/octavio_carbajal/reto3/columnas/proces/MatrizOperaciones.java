@@ -27,6 +27,7 @@ public class MatrizOperaciones {
     public void generarMatrizRamdom(){
         /**
          * aqui se genera la matriz y se hace el conteo de conlumnas y filas
+         * el random tambien no permite crear numeros aleatorios del 1 al 100
          */
         for (int i = 0; i < filas; i++){
             for (int j = 0; j < columnas; j++){
