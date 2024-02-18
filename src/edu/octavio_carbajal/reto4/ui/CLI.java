@@ -11,6 +11,7 @@ public class CLI {
         Scanner scanner = new Scanner(System.in);
 
         while (true) {
+            // Mostrar opciones del menú
             System.out.println("Menu:");
             System.out.println("A. Realizar venta de boleto");
             System.out.println("B. Mostrar datos de la lista de ventas");
@@ -20,10 +21,10 @@ public class CLI {
 
             switch (option) {
                 case "A":
-                    sellTicket(scanner);
+                    sellTicket(scanner); // Realizar venta de boleto
                     break;
                 case "B":
-                    showSalesData();
+                    showSalesData(); // Mostrar datos de la lista de ventas
                     break;
                 case "S":
                     System.out.println("Programa finalizado.");
@@ -34,6 +35,7 @@ public class CLI {
         }
     }
 
+    // Método para realizar la venta de boletos
     private static void sellTicket(Scanner scanner) {
         System.out.print("Ingrese nombre completo del comprador: ");
         String buyerName = scanner.nextLine();
@@ -47,10 +49,12 @@ public class CLI {
             additionalPassengers.add(scanner.nextLine());
         }
 
+        // Registrar la venta de boletos
         TicketManager.sellTicket(buyerName, quantity, additionalPassengers);
         System.out.println("Ticket de venta generado.");
     }
 
+    // Método para mostrar los datos de la lista de ventas de boletos
     private static void showSalesData() {
         System.out.println("Lista de pasajeros registrados:");
         ArrayList<TicketSale> ticketSales;
@@ -66,6 +70,7 @@ public class CLI {
             System.out.println();
         });
 
+        // Mostrar el ingreso total y la cantidad total de pasajeros registrados
         System.out.println("Importe total de la lista de boletos: $" + TicketManager.calculateTotalIncome());
         System.out.println("Cantidad total de pasajeros registrados: " + TicketManager.getTotalPassengers());
     }
