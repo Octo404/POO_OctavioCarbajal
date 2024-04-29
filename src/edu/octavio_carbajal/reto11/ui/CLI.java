@@ -1,8 +1,11 @@
 package edu.octavio_carbajal.reto11.ui;
 
 import edu.octavio_carbajal.reto11.proces.AnalizadorDeLibros;
+import org.junit.Test;
 
 import java.util.Scanner;
+
+import static org.junit.Assert.assertEquals;
 
 public class CLI {
     private static final Scanner sc = new Scanner(System.in);
@@ -11,7 +14,7 @@ public class CLI {
     /**
      * Menu de idiomas
      */
-    public  static void menuIdiomas(){
+    public  static void menuIdiomas(int i){
         System.out.println("Selecciona el idioma del programa");
         System.out.println("1-Espanol");
         System.out.println("2-English");
@@ -32,7 +35,7 @@ public class CLI {
      * Menu de opciones
      */
     public static void launchApp(){
-        menuIdiomas();
+        menuIdiomas(3);
         int opcion;
         while (true){
             System.out.println("");
@@ -75,5 +78,47 @@ public class CLI {
                     break;
             }
         }
+    }
+}
+
+public class CLITest {
+
+    @Test
+    public void testIdiomaIncorrecto() {
+        // Simular selección de opción de idioma no válida (por ejemplo, opción 3)
+        // Se espera que el texto seleccionado sea el predeterminado en caso de error
+        CLI.menuIdiomas(3);
+        assertEquals("Opción no disponible", CLI.getTextoError());
+    }
+}
+
+public class CLITest {
+
+    @Test
+    public void testSalidaPrograma() {
+        // Simular selección de opción de salida (por ejemplo, opción 6)
+        // Se espera que el programa se cierre con código de salida 0
+        CLI.simularSeleccionSalida();
+        assertEquals(0, CLI.getCodigoSalida()); // Verificar código de salida
+    }
+}
+
+public class CliTest {
+
+    @Test
+    public void testIdiomaPorDefecto() {
+        // No se realiza ninguna selección de idioma, se espera que se seleccione el idioma predeterminado
+        CLI.iniciarAplicacion();
+        assertEquals("español", CLI.getIdiomaSeleccionado()); // Verificar idioma seleccionado por defecto
+    }
+}
+
+public class CliTest {
+
+    @Test
+    public void testIdiomaIncorrecto() {
+        // Simular selección de opción de idioma no válida (por ejemplo, opción 3)
+        CLI.menuIdiomas(3);
+        assertEquals("Opción no disponible", CLI.getTextoError());
     }
 }
