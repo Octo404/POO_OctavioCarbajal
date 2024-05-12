@@ -18,10 +18,10 @@ public class CLI {
         int opcion = scanner.nextInt();
         switch (opcion){
             case 1:
-                Textos = new Esp();
+                textos = new Esp();
                 break;
             case 2:
-                Textos = new Ingl();
+                textos = new Ingl();
                 break;
             default:
                 System.out.println("Opcion no disponible");
